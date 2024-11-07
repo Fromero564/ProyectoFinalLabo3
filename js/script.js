@@ -168,7 +168,14 @@ function createCategories() {
         // Crea la estructura de la tarjeta
         const  li = document.createElement('li');
         li.classList.add('list-categoria');
-         li.textContent = categoriaTraducida;
+       
+        const a = document.createElement('a');
+        a.href = './'+categoria +'.html';
+        a.textContent = categoriaTraducida;
+         
+
+        li.appendChild(a);
+
 
         // Añade la tarjeta completa al contenedor principal
         ul.appendChild(li);
