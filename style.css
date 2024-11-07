@@ -119,17 +119,23 @@ input{
   width: 100%; 
 }
 
-.cartel-rojo{
-    border-radius: 30px;
-    padding: auto;
-    margin:auto;
-    padding: 10px;
-    width: 60%;
-    height: 500px;
-    border: 2px solid black;
-    background-color: #FAEBD7;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #0a100d;
+#card-container, #all-products {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en varias filas */
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center;
+  padding: 20px;
+}
+
+.cartel-rojo {
+  border-radius: 30px;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+  border: 2px solid black;
+  background-color: #FAEBD7;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #0a100d;
 }
 
 h1
@@ -196,15 +202,16 @@ margin-bottom: 20px;
     padding: 5px; 
     font-size: 16px;
   }
-.card-img{
+  .card-img{
     width: 100%;           
     height: 150px;         
-    object-fit: cover;     
+    object-fit: contain;     
     border-radius: 1rem;   
     margin-bottom: 10px;
 }
   
   .card-title {
+    margin: 10px 0;
     font-size: 13px;
     font-weight: 500;
     text-align: center;
@@ -220,13 +227,13 @@ margin-bottom: 20px;
   
   .card-footer {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
   }
   
   .card-price {
+    margin: 10px 0;
     font-size: 20px;
     font-weight: 500;
     color: var(--font-color);
@@ -279,19 +286,6 @@ margin-bottom: 20px;
     transform: translateY(3px);
   }
 
-  #all-products {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); 
-    gap: 20px; 
-    max-width: 100%; 
-    margin: 0 auto; 
-    padding: 20px;
-}
-
-#card-container .card {
-    width: 100%; 
-    height: auto;
-}
 
 /*PAGINA DE LOGIN*/
 
@@ -460,6 +454,7 @@ footer p {
 .redes-sociales a {
   text-decoration: none;
 }
+
 
 @media (max-width: 1300px) {
   #all-products {
