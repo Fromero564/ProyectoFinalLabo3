@@ -165,9 +165,6 @@ margin-bottom: 20px;
     width: 230px;
     height: 350px;
     background: var(--bg-color);
-    border: 2px solid var(--main-color);
-    box-shadow: 4px 4px var(--main-color);
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -193,8 +190,7 @@ margin-bottom: 20px;
   }
 .card-img{
     width: 100%;           
-    height: 150px;         
-    object-fit: cover;     
+    height: 150px;             
     border-radius: 1rem;   
     margin-bottom: 10px;
 }
@@ -254,7 +250,7 @@ margin-bottom: 20px;
   .card:hover
   {
     transform: translateY(-5px);
-    box-shadow: 8px 8px 8px rgba(196, 108, 216, 0.938); 
+    box-shadow: 8px 8px 8px rgba(35, 37, 66, 0.938); 
     transition: transform 0.3s ease; 
 }
   
