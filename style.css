@@ -1,7 +1,7 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: beige;
+    box-sizing: content-box;
 }
 input{
     margin: 5px;
@@ -13,8 +13,7 @@ input{
 .nav-bar{
     background-color: black;
     color: white;
-    margin: 10;
-    padding: 20;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -22,8 +21,15 @@ input{
     height: 80px;
 }  
 
+
+.opciones{
+  background-color: black;
+  color:#fff;
+}
+
 .opciones li{
     display:inline-block;
+    color:#fff;
     flex-wrap: wrap;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
@@ -35,12 +41,56 @@ input{
 .opciones a{
     margin: 5px;
     padding: 25px;
+    color:#fff;
     text-decoration: none;
     justify-content: center;
     text-align: center;
     align-items: center;
-    color: rgba(36, 34, 34, 0.767);
+
 }
+
+/*Menu desplegable*/
+
+.opciones ul {
+  list-style: none;
+  padding: 0;
+}
+
+#menu-hamburguesa {
+  position: relative;
+}
+
+.toggle-categorias {
+  cursor: pointer;
+}
+
+
+.categorias-menu.oculto {
+  display: none;
+}
+
+
+.categorias-menu {
+  display: flex;
+  flex-direction: column; 
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.categorias-menu li {
+  padding: 8px 0;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.categorias-menu li:hover {
+  background-color: #f0f0f0;
+}
+
 .cartel-rojo{
     border-radius: 30px;
     padding: auto;
@@ -49,7 +99,7 @@ input{
     width: 60%;
     height: 500px;
     border: 2px solid black;
-    background-color: #8d0801;
+    background-color: #FAEBD7;
     font-family: Arial, Helvetica, sans-serif;
     color: #0a100d;
 }
@@ -109,14 +159,6 @@ input{
     color: var(--font-color);
   }
 
-  .card-footer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-  }
-  
   
   .card-divider {
     width: 100%;
@@ -129,6 +171,7 @@ input{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
   }
   
   .card-price {
@@ -145,8 +188,9 @@ input{
   
   .card-btn {
     height: 35px;
-    background: var(--bg-color);
-    border: 2px solid var(--main-color);
+    background: #DC143C;
+    /* var(--bg-color) */
+    /* border: 3px solid rgba(218, 207, 207, 0.856); */
     border-radius: 5px;
     padding: 0 15px;
     transition: all 0.3s;
@@ -155,7 +199,9 @@ input{
   .card-btn svg {
     width: 100%;
     height: 100%;
-    fill: var(--main-color);
+ 
+    fill: #fff ;
+    /* var(--main-color) */
     transition: all 0.3s;
   }
   
@@ -164,11 +210,11 @@ input{
   }
   
   .card-btn:hover {
-    border: 2px solid var(--main-focus);
+    border: 2px solid #fff;
   }
   
   .card-btn:hover svg {
-    fill: var(--main-focus);
+    fill: #fff;
   }
   
   .card-btn:active {

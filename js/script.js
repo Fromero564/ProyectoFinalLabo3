@@ -1,5 +1,15 @@
 
 let dataInfo;
+let categoriasInfo;
+
+//Diccionario
+const categoriaTraducciones = {
+    "electronics": "Electrónica",
+    "jewelery": "Joyería",
+    "men's clothing": "Ropa de Hombre",
+    "women's clothing": "Ropa de Mujer"
+};
+
 
 // Función para obtener los datos de la API y guardarlos en dataInfo
 async function fetchData() {
@@ -81,6 +91,10 @@ function createCardsAllProducts() {
         const title = document.createElement('div');
         title.classList.add('card-title');
         title.textContent = product.title;
+        
+        // const subtitle = document.createElement('p');
+        // subtitle.classList.add('subtitle');
+        // subtitle.textContent = 'Categoria:'+product.category;
 
        
         const price = document.createElement('div');
@@ -99,7 +113,7 @@ function createCardsAllProducts() {
         // Agrega los elementos al div de la tarjeta
         card.appendChild(img);
         card.appendChild(title);
-        // card.appendChild(description);
+        // card.appendChild(subtitle);
         footer.appendChild(price);
         footer.appendChild(button);
 
@@ -109,6 +123,48 @@ function createCardsAllProducts() {
     });
 }
 
+//Muestra todos los productos
+
 fetchData().then(() => {
     createCardsAllProducts();
+})
+
+//Todas las categorias 
+
+
+async function fetchDataCategorias() {
+    const response = await fetch('https://fakestoreapi.com/products/categories');
+    categoriasInfo = await response.json();
+}
+
+
+// Función para crear y añadir las categorias al HTML
+function createCategories() {
+    const ul = document.getElementById('categorias'); // Lista desordenada para las categorias
+
+
+      categoriasInfo.forEach(categoria => {
+            
+         const categoriaTraducida = categoriaTraducciones[categoria] || categoria;
+        // Crea la estructura de la tarjeta
+        const  li = document.createElement('li');
+        li.classList.add('list-categoria');
+         li.textContent = categoriaTraducida;
+
+        // Añade la tarjeta completa al contenedor principal
+        ul.appendChild(li);
+         });
+}
+
+//Menu desplegable
+document.querySelector('.toggle-categorias').addEventListener('click', () => {
+    const categoriasMenu = document.getElementById('categorias');
+    categoriasMenu.classList.toggle('oculto'); 
+});
+
+
+//Muestra todas las categorias
+
+fetchDataCategorias().then(() => {
+    createCategories();
 })

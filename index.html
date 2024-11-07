@@ -7,7 +7,8 @@
     <title>Nombre de tienda</title>
   </head>
   <body>
-    <main class="nav-bar">
+    <header>
+    <div class="nav-bar">
       <p>Icono</p>
       <input
         type="search"
@@ -15,11 +16,15 @@
         class="search"
         placeholder="¿Qué estás buscando?"
       />
-    </main>
+    </div>
 
-    <div class="opciones">
+    <nav class="opciones">
       <ul>
-        <li><a href="#">Todas las categorías ✔</a></li>
+        <li id="menu-hamburguesa">
+          <p class="toggle-categorias">Todas las categorías ▼</p>
+          <ul id="categorias" class="categorias-menu oculto">
+          </ul>
+        </li>
         <li><a href="#">Ofertas</a></li>
         <li><a href="#">CyberMonday</a></li>
         <li><a href="#">Electrodomésticos</a></li>
@@ -27,7 +32,9 @@
         <li><a href="#">Ayuda</a></li>
         <li><a href="#">Carrito 🛒</a></li>
       </ul>
-    </div>
+    </nav>
+
+  </header>
     <br /> <br /><br /><br /><br /><br /><br /> <p>Aca irian algunas imagenes de los productos</p><br /><br /><br /><br /><br /><br />
    
 
