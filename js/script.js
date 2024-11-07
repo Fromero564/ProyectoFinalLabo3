@@ -92,9 +92,13 @@ function createCardsAllProducts() {
         title.classList.add('card-title');
         title.textContent = product.title;
         
-        // const subtitle = document.createElement('p');
-        // subtitle.classList.add('subtitle');
-        // subtitle.textContent = 'Categoria:'+product.category;
+        const cantidad = document.createElement('input');
+        cantidad.type = 'number'; 
+        cantidad.classList.add('cantidad-input'); 
+        cantidad.placeholder = 'Cantidad'; 
+        
+        // Si deseas agregar un valor por defecto (opcional)
+        cantidad.value = 1;
 
        
         const price = document.createElement('div');
@@ -168,3 +172,72 @@ document.querySelector('.toggle-categorias').addEventListener('click', () => {
 fetchDataCategorias().then(() => {
     createCategories();
 })
+
+
+// Obtener usuarios desde la API
+async function obtenerUsuarios() {
+    try {
+        const res = await fetch('https://fakestoreapi.com/users');
+        const usuarios = await res.json();
+        return usuarios;
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error);
+    }
+}
+
+// Función para iniciar sesión
+async function ingresar() {
+    // Capturar valores del formulario
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+
+
+    if (username === "") {
+        alert("Debe completar el campo de usuario");
+        document.getElementById('username').focus();
+        return;
+    } else if (password === "") {
+        alert("Debe escribir una contraseña");
+        document.getElementById('password').focus();
+        return;
+    }
+
+    // Obtener lista de usuarios
+    const usuarios = await obtenerUsuarios();
+
+    // Buscar usuario que coincida con los datos ingresados
+    const usuarioEncontrado = usuarios.find(user => 
+        user.username === username && user.password === password
+    );
+
+    if (usuarioEncontrado) {
+        // Guardar nombre e id en localStorage
+        localStorage.setItem("Usuario", usuarioEncontrado.username);
+        localStorage.setItem("idUsuario", usuarioEncontrado.id);
+        localStorage.setItem("nombreUsuario", usuarioEncontrado.name.firstname);
+        window.location.href = "../index.html";
+      
+    } else {
+        alert("Nombre de usuario o contraseña incorrectos");
+    }
+}
+
+
+//Agergar cartel de bienvenida y cerrar sesion
+ 
+const nombreUsuario = localStorage.getItem("nombreUsuario");
+  
+if (nombreUsuario) {
+    const loginLink = document.getElementById("login-link");
+    loginLink.innerHTML = `¡Bienvenido, ${nombreUsuario}! <button onclick="cerrarSesion()">Cerrar sesión</button>`;
+}
+
+
+function cerrarSesion() {
+    localStorage.removeItem("nombreUsuario");
+    localStorage.removeItem("idUsuario");
+    window.location.href = "./pages/login.html"; 
+}
+
+
+       
