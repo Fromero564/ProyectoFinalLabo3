@@ -92,12 +92,27 @@ function createCardsAllProducts() {
         title.classList.add('card-title');
         title.textContent = product.title;
         
-        const cantidad = document.createElement('input');
-        cantidad.type = 'number'; 
-        cantidad.classList.add('cantidad-input'); 
-        cantidad.placeholder = 'Cantidad'; 
+        const cantidadContainer = document.createElement('div');
+       cantidadContainer.classList.add('cantidad-container');
+       // Crear el texto "Cantidad:"
+      const cantidadTexto = document.createElement('p');
+      cantidadTexto.textContent = "Cantidad:";
+      cantidadTexto.classList.add('cantidad-texto');
+
+       // Crear el input de cantidad
+     const cantidad = document.createElement('input');
+     cantidad.type = 'number';
+     cantidad.classList.add('cantidad-input');
+     cantidad.min = 0;
+     cantidad.value = 1;
+
+      // Agregar el texto y el input al contenedor
+      cantidadContainer.appendChild(cantidadTexto);
+      cantidadContainer.appendChild(cantidad);
+
         
         // Si deseas agregar un valor por defecto (opcional)
+        cantidad.min = 0; 
         cantidad.value = 1;
 
        
@@ -117,7 +132,7 @@ function createCardsAllProducts() {
         // Agrega los elementos al div de la tarjeta
         card.appendChild(img);
         card.appendChild(title);
-        // card.appendChild(subtitle);
+        card.appendChild(cantidadContainer);
         footer.appendChild(price);
         footer.appendChild(button);
 
