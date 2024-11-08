@@ -136,6 +136,9 @@ input{
   background-color: #283558;
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
+  background-image: url("./img/Fueguito\ Rojo.gif");
+  background-size: contain;
+  
 }
 
 h1
@@ -144,6 +147,22 @@ margin-top: 150px;
 margin-bottom: 20px;
 margin-left: 30px;
 }
+
+.container h2
+{
+  text-align: center;
+  font-family: "roboto";
+  font-size: 30px;
+}
+
+.container p
+{
+  text-align: center;
+  font-family: "roboto";
+  font-size: 20px;
+}
+
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
