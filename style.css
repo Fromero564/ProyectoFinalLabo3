@@ -489,6 +489,7 @@ footer p {
 /*Pagina de filtros*/
 .container-products-filter {
   display: grid;
+  margin: 10px;
   grid-template-columns: repeat(5, 1fr); 
   gap: 10px; 
   justify-items: center; 
@@ -507,6 +508,10 @@ footer p {
   #all-products {
       grid-template-columns: repeat(3, 1fr); /* 3 columnas */
   }
+  .container-products-filter {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
 }
 
 
@@ -548,6 +553,10 @@ footer p {
 .nav-bar p, .opciones li {
     text-align: center;
     width: 100%;
+}
+
+.container-products-filter {
+  grid-template-columns: repeat(1, 1fr);
 }
 }
 
