@@ -453,13 +453,15 @@ footer p {
   text-decoration: none;
 }
 
-/*Pagina de electronica*/
-#electronics-products {
+/*Pagina de filtros*/
+.container-products-filter {
   display: grid;
   grid-template-columns: repeat(5, 1fr); 
   gap: 10px; 
   justify-items: center; 
 }
+
+
 
 @media (max-width: 1300px) {
   #all-products {

@@ -1,6 +1,9 @@
 
 let dataInfo;
 let dataInfoElectronic;
+let dataInfoJewelery;
+let dataInfoMen;
+let dataInfoWomen;
 let categoriasInfo;
 
 //Diccionario
@@ -147,6 +150,7 @@ function createCardsAllProducts() {
 
 fetchData().then(() => {
     createCardsAllProducts();
+ 
 })
 
 //Todas las categorias 
@@ -349,83 +353,205 @@ function cerrarSesion() {
 })
 
 
+// Función para obtener productos de joyería
 async function fetchDataJewelery() {
     const response = await fetch('https://fakestoreapi.com/products/category/jewelery');
-   dataInfoElectronic = await response.json();
-   }
+    dataInfoJewelery = await response.json();
+}
 
-   function createCardsAllProductsJewelery() {
-      const containerJewelery = document.getElementById('jewelery-products'); // Selecciona el contenedor donde irán las tarjetas
-  
-  
-      // Recorre cada producto en dataInfo y crea una tarjeta para cada uno
-      dataInfoElectronic.forEach(product => {
-          // Crea la estructura de la tarjeta
-          const card = document.createElement('div');
-          card.classList.add('card');
-  
-          const img = document.createElement('img');
-          img.src = product.image;
-          img.alt = product.title;
-          img.classList.add('card-img');
-  
-          const title = document.createElement('div');
-          title.classList.add('card-title');
-          title.textContent = product.title;
-          
-          const cantidadContainer = document.createElement('div');
-         cantidadContainer.classList.add('cantidad-container');
-         // Crear el texto "Cantidad:"
+// Función para crear tarjetas de productos de joyería
+function createCardsAllProductsJewelery() {
+    const containerJewelery = document.getElementById('jewelery-products');
+
+    dataInfoJewelery.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.alt = product.title;
+        img.classList.add('card-img');
+
+        const title = document.createElement('div');
+        title.classList.add('card-title');
+        title.textContent = product.title;
+
+        const cantidadContainer = document.createElement('div');
+        cantidadContainer.classList.add('cantidad-container');
+
         const cantidadTexto = document.createElement('p');
         cantidadTexto.textContent = "Cantidad:";
         cantidadTexto.classList.add('cantidad-texto');
-  
-         // Crear el input de cantidad
-       const cantidad = document.createElement('input');
-       cantidad.type = 'number';
-       cantidad.classList.add('cantidad-input');
-       cantidad.min = 0;
-       cantidad.value = 1;
-  
-        // Agregar el texto y el input al contenedor
+
+        const cantidad = document.createElement('input');
+        cantidad.type = 'number';
+        cantidad.classList.add('cantidad-input');
+        cantidad.min = 0;
+        cantidad.value = 1;
+
         cantidadContainer.appendChild(cantidadTexto);
         cantidadContainer.appendChild(cantidad);
-  
-          
-          // Si deseas agregar un valor por defecto (opcional)
-          cantidad.min = 0; 
-          cantidad.value = 1;
-  
-         
-          const price = document.createElement('div');
-          price.classList.add('card-price');
-          price.innerHTML = `<span>$</span> ${product.price.toFixed(2)}`;
-  
-          const button = document.createElement('button');
-          button.classList.add('card-btn');
-          button.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z"></path><path d="m222 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m368.42 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m158.08 165.49a15 15 0 0 1 -14.23-10.26l-25.71-77.23h-47.44a15 15 0 1 1 0-30h58.3a15 15 0 0 1 14.23 10.26l29.13 87.49a15 15 0 0 1 -14.23 19.74z"></path></svg>
-          `;
-  
-          const footer = document.createElement('div');
-            footer.classList.add('card-footer');
-  
-          // Agrega los elementos al div de la tarjeta
-          card.appendChild(img);
-          card.appendChild(title);
-          card.appendChild(cantidadContainer);
-          footer.appendChild(price);
-          footer.appendChild(button);
-  
-          card.appendChild(footer);
-          // Añade la tarjeta completa al contenedor principal
-          containerJewelery.appendChild(card);
-         
-      });
-  }
+
+        const price = document.createElement('div');
+        price.classList.add('card-price');
+        price.innerHTML = `<span>$</span> ${product.price.toFixed(2)}`;
+
+        const button = document.createElement('button');
+        button.classList.add('card-btn');
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z"></path><path d="m222 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m368.42 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m158.08 165.49a15 15 0 0 1 -14.23-10.26l-25.71-77.23h-47.44a15 15 0 1 1 0-30h58.3a15 15 0 0 1 14.23 10.26l29.13 87.49a15 15 0 0 1 -14.23 19.74z"></path></svg>
+        `;
+
+        const footer = document.createElement('div');
+        footer.classList.add('card-footer');
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(cantidadContainer);
+        footer.appendChild(price);
+        footer.appendChild(button);
+
+        card.appendChild(footer);
+        containerJewelery.appendChild(card);
+    });
+}
+
+// Obtener productos de joyería y mostrarlos
+fetchDataJewelery().then(() => {
+    createCardsAllProductsJewelery();
+});
+
+// Función para obtener productos de ropa de mujer
+async function fetchDataWomen() {
+    const response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
+    dataInfoWomen = await response.json();
+}
+
+// Función para crear tarjetas de productos de ropa de mujer
+function createCardsAllProductsWomen() {
+    const containerWomen = document.getElementById('women-products');
+
+    dataInfoWomen.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.alt = product.title;
+        img.classList.add('card-img');
+
+        const title = document.createElement('div');
+        title.classList.add('card-title');
+        title.textContent = product.title;
+
+        const cantidadContainer = document.createElement('div');
+        cantidadContainer.classList.add('cantidad-container');
+
+        const cantidadTexto = document.createElement('p');
+        cantidadTexto.textContent = "Cantidad:";
+        cantidadTexto.classList.add('cantidad-texto');
+
+        const cantidad = document.createElement('input');
+        cantidad.type = 'number';
+        cantidad.classList.add('cantidad-input');
+        cantidad.min = 0;
+        cantidad.value = 1;
+
+        cantidadContainer.appendChild(cantidadTexto);
+        cantidadContainer.appendChild(cantidad);
+
+        const price = document.createElement('div');
+        price.classList.add('card-price');
+        price.innerHTML = `<span>$</span> ${product.price.toFixed(2)}`;
+
+        const button = document.createElement('button');
+        button.classList.add('card-btn');
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z"></path><path d="m222 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m368.42 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m158.08 165.49a15 15 0 0 1 -14.23-10.26l-25.71-77.23h-47.44a15 15 0 1 1 0-30h58.3a15 15 0 0 1 14.23 10.26l29.13 87.49a15 15 0 0 1 -14.23 19.74z"></path></svg>
+        `;
+
+        const footer = document.createElement('div');
+        footer.classList.add('card-footer');
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(cantidadContainer);
+        footer.appendChild(price);
+        footer.appendChild(button);
+
+        card.appendChild(footer);
+        containerWomen.appendChild(card);
+    });
+
+}
+fetchDataWomen().then(() => {
+    createCardsAllProductsWomen();
+});
 
 
-  
-  fetchDataElectronic().then(() => {
-  createCardsAllProductsElectronic();
-})
+// Función para obtener productos de ropa de mujer
+async function fetchDataMen() {
+    const response = await fetch("https://fakestoreapi.com/products/category/men's clothing");
+    dataInfoMen = await response.json();
+}
+
+// Función para crear tarjetas de productos de ropa de mujer
+function createCardsAllProductsMen() {
+    const containerMen = document.getElementById('men-products');
+
+    dataInfoMen.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.alt = product.title;
+        img.classList.add('card-img');
+
+        const title = document.createElement('div');
+        title.classList.add('card-title');
+        title.textContent = product.title;
+
+        const cantidadContainer = document.createElement('div');
+        cantidadContainer.classList.add('cantidad-container');
+
+        const cantidadTexto = document.createElement('p');
+        cantidadTexto.textContent = "Cantidad:";
+        cantidadTexto.classList.add('cantidad-texto');
+
+        const cantidad = document.createElement('input');
+        cantidad.type = 'number';
+        cantidad.classList.add('cantidad-input');
+        cantidad.min = 0;
+        cantidad.value = 1;
+
+        cantidadContainer.appendChild(cantidadTexto);
+        cantidadContainer.appendChild(cantidad);
+
+        const price = document.createElement('div');
+        price.classList.add('card-price');
+        price.innerHTML = `<span>$</span> ${product.price.toFixed(2)}`;
+
+        const button = document.createElement('button');
+        button.classList.add('card-btn');
+        button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="m397.78 316h-205.13a15 15 0 0 1 -14.65-11.67l-34.54-150.48a15 15 0 0 1 14.62-18.36h274.27a15 15 0 0 1 14.65 18.36l-34.6 150.48a15 15 0 0 1 -14.62 11.67zm-193.19-30h181.25l27.67-120.48h-236.6z"></path><path d="m222 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m368.42 450a57.48 57.48 0 1 1 57.48-57.48 57.54 57.54 0 0 1 -57.48 57.48zm0-84.95a27.48 27.48 0 1 0 27.48 27.47 27.5 27.5 0 0 0 -27.48-27.47z"></path><path d="m158.08 165.49a15 15 0 0 1 -14.23-10.26l-25.71-77.23h-47.44a15 15 0 1 1 0-30h58.3a15 15 0 0 1 14.23 10.26l29.13 87.49a15 15 0 0 1 -14.23 19.74z"></path></svg>
+        `;
+
+        const footer = document.createElement('div');
+        footer.classList.add('card-footer');
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(cantidadContainer);
+        footer.appendChild(price);
+        footer.appendChild(button);
+
+        card.appendChild(footer);
+        containerMen.appendChild(card);
+    });
+
+}
+fetchDataMen().then(() => {
+    createCardsAllProductsMen();
+});
