@@ -14,7 +14,7 @@ input{
     width: 40%;
     font-size: 15px;
     border-radius: 15px;
-}
+} 
 .nav-bar{
     display: flex;
     justify-content: center;
@@ -53,6 +53,20 @@ input{
 
 }
 
+.formulario-busqueda{
+  width: 30vw;
+  display: flex;
+}
+
+.barra-busqueda{
+  border-radius: 0%;
+  height: 30px!important;
+  width: 100%;
+}
+
+.formulario-busqueda button{
+  height: 30px!important;
+}
 /*Menu desplegable*/
 
 .opciones ul {
