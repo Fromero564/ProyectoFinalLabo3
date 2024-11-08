@@ -119,23 +119,30 @@ input{
   width: 100%; 
 }
 
-.cartel-rojo{
-    border-radius: 30px;
-    padding: auto;
-    margin:auto;
-    padding: 10px;
-    width: 60%;
-    height: 500px;
-    border: 2px solid black;
-    background-color: #FAEBD7;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #0a100d;
+#card-container, #all-products {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en varias filas */
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center;
+  padding: 20px;
+}
+
+.cartel-rojo {
+  border-radius: 30px;
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+  border: 2px solid black;
+  background-color: #283558;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
 }
 
 h1
 {
 margin-top: 150px; 
 margin-bottom: 20px;
+margin-left: 30px;
 }
 .container {
     max-width: 1200px;
@@ -171,6 +178,11 @@ margin-bottom: 20px;
     padding: 20px;
     gap: 10px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 250px; 
+    flex: 1 1 200px; 
   }
   
   .cantidad-container {
@@ -188,14 +200,16 @@ margin-bottom: 20px;
     padding: 5px; 
     font-size: 16px;
   }
-.card-img{
+  .card-img{
     width: 100%;           
-    height: 150px;             
+    height: 150px;         
+    object-fit: contain;     
     border-radius: 1rem;   
     margin-bottom: 10px;
 }
   
   .card-title {
+    margin: 10px 0;
     font-size: 13px;
     font-weight: 500;
     text-align: center;
@@ -211,13 +225,13 @@ margin-bottom: 20px;
   
   .card-footer {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
   }
   
   .card-price {
+    margin: 10px 0;
     font-size: 20px;
     font-weight: 500;
     color: var(--font-color);
@@ -231,7 +245,7 @@ margin-bottom: 20px;
   
   .card-btn {
     height: 35px;
-    background: #DC143C;
+    background: #05384d;
     /* var(--bg-color) */
     /* border: 3px solid rgba(218, 207, 207, 0.856); */
     border-radius: 5px;
@@ -270,19 +284,6 @@ margin-bottom: 20px;
     transform: translateY(3px);
   }
 
-  #all-products {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); 
-    gap: 20px; 
-    max-width: 100%; 
-    margin: 0 auto; 
-    padding: 20px;
-}
-
-#card-container .card {
-    width: 100%; 
-    height: auto;
-}
 
 /*PAGINA DE LOGIN*/
 
@@ -452,44 +453,64 @@ footer p {
   text-decoration: none;
 }
 
+
 @media (max-width: 1300px) {
-    #all-products {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-    }
+  #all-products {
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  }
 }
 
 
 @media (max-width: 992px) {
-    #all-products {
-        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    }
+  #all-products {
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  }
 }
 
 
 @media (max-width: 768px) {
-    #all-products {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-    }
+.nav-bar, .opciones ul {
+  flex-direction: column;
+}
 
-    footer {
-      padding: 15px;
-    }
-    
-    .medios-pago img,
-    .redes-sociales a img {
-      width: 25px;
-      height: 25px;
-    }
+.carousel-custom-height .carousel-item img {
+    height: auto;
+}
+
+.card {
+  flex: 1 1 45%; /* Dos tarjetas por fila en pantallas medianas */
+}
   
-    .ubicacion iframe {
-      width: 100%;
-      height: 120px;
-    }
+.medios-pago img,
+.redes-sociales a img {
+  width: 25px;
+  height: 25px;
+}
+
+.ubicacion iframe {
+  width: 100%;
+  height: 120px;
+}
 }
 
 
 @media (max-width: 480px) {
-    #all-products {
-        grid-template-columns: 1fr; /* 1 columna */
-    }
+.card {
+  flex: 1 1 100%; /* Una tarjeta por fila en pantallas pequeñas */
+}
+
+.nav-bar, .opciones ul {
+    flex-direction: column;
+}
+
+.nav-bar p, .opciones li {
+    text-align: center;
+    width: 100%;
+}
+}
+
+.IconoVidriera img
+{
+  width: 50px;
+  height: 50px;
 }
